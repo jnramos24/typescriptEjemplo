@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist", // Carpeta donde se colocarán los archivos compilados
+    "rootDir": "./src", // Carpeta donde están tus archivos TypeScript 
+    "strict": true, // Activar todas las comprobaciones estrictas
+    "esModuleInterop": true, // Importaciones más fáciles con módulos ES
+    "target": "ES6" // Definir el estándar de JavaScript de salida
+  }
+}
