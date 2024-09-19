@@ -443,3 +443,121 @@ TypeScript es un lenguaje ideal para la POO porque, además de las característi
 - **Mantenimiento y escalabilidad**: Los sistemas grandes son más fáciles de gestionar cuando están bien encapsulados.
 - **Seguridad de tipos**: El tipado estático de TypeScript ayuda a evitar errores comunes al programar.
 
+### Arrays en TypeScript
+
+Los **arrays** en TypeScript son listas de elementos que tienen el mismo tipo. Los arrays permiten almacenar múltiples valores en una sola variable, y en TypeScript, es posible tipar los arrays para asegurarse de que solo contengan valores de un tipo específico.
+
+#### Sintaxis de Arrays en TypeScript
+
+Puedes declarar un array de dos formas principales:
+1. Usando el tipo seguido de `[]` (por ejemplo, `number[]` para un array de números).
+2. Usando la sintaxis genérica `Array<tipo>` (por ejemplo, `Array<number>`).
+
+#### Ejemplo de Arrays:
+
+```typescript
+let numbers: number[] = [1, 2, 3, 4, 5];
+let fruits: Array<string> = ['apple', 'banana', 'orange'];
+
+// Acceder a elementos
+console.log(numbers[0]); // 1
+console.log(fruits[1]);  // banana
+
+// Añadir elementos
+numbers.push(6);
+fruits.push('grape');
+
+// Recorrer el array
+for (let fruit of fruits) {
+    console.log(fruit);
+}
+
+// Modificar un valor
+numbers[2] = 10;
+console.log(numbers); // [1, 2, 10, 4, 5, 6]
+```
+
+#### Métodos comunes para trabajar con Arrays:
+
+- **`push`**: Añade un elemento al final del array.
+- **`pop`**: Elimina el último elemento del array.
+- **`map`**: Aplica una función a cada elemento del array y retorna un nuevo array con los resultados.
+- **`filter`**: Filtra los elementos del array según una condición.
+- **`forEach`**: Ejecuta una función para cada elemento del array.
+  
+### Tuplas en TypeScript
+
+Las **tuplas** en TypeScript son similares a los arrays, pero se utilizan para definir un conjunto de elementos con un número fijo y tipos específicos en cada posición. A diferencia de los arrays, que contienen elementos de un solo tipo, una tupla puede contener múltiples tipos.
+
+#### Ejemplo de una Tupla:
+
+```typescript
+let person: [string, number];
+person = ['Alice', 30]; // Correcto
+// person = [30, 'Alice']; // Error, el orden debe coincidir con el tipo
+
+console.log(person[0]); // 'Alice'
+console.log(person[1]); // 30
+
+// Modificar la tupla
+person[1] = 31;
+console.log(person); // ['Alice', 31]
+```
+
+En este ejemplo, la tupla `person` debe contener un `string` en la primera posición y un `number` en la segunda. Si intentas cambiar el orden o los tipos de los elementos, TypeScript mostrará un error.
+
+#### Acceder a elementos y métodos con tuplas
+
+Aunque puedes acceder a los elementos de una tupla de la misma manera que lo haces con un array, ten en cuenta que las tuplas están tipadas en términos de posición, lo que significa que TypeScript sabe qué tipo debe haber en cada posición.
+
+### Tuplas con más de dos elementos
+
+Las tuplas no están limitadas a dos elementos. Puedes definir tuplas más complejas que incluyan diferentes tipos en distintas posiciones:
+
+```typescript
+let car: [string, number, boolean];
+car = ['Toyota', 2020, true];
+
+console.log(car[0]); // 'Toyota'
+console.log(car[1]); // 2020
+console.log(car[2]); // true
+```
+
+En este caso, `car` es una tupla que contiene:
+- Un `string` para el nombre del automóvil.
+- Un `number` para el año.
+- Un `boolean` para indicar si es nuevo o no.
+
+### Diferencias clave entre Arrays y Tuplas
+
+1. **Tipo de datos**:
+   - Un **array** normalmente contiene elementos del mismo tipo (aunque puede contener diferentes tipos usando `any[]`).
+   - Una **tupla** puede contener elementos de distintos tipos y tiene un número fijo de elementos.
+
+2. **Longitud**:
+   - Los **arrays** pueden crecer dinámicamente.
+   - Las **tuplas** tienen una longitud fija definida al momento de su declaración.
+
+3. **Orden**:
+   - En los **arrays**, el tipo de dato es uniforme y no depende de la posición.
+   - En las **tuplas**, el tipo de cada elemento depende de su posición en la tupla.
+
+### Ejemplo combinando Arrays y Tuplas:
+
+Puedes tener un array de tuplas, donde cada tupla representa una estructura más compleja:
+
+```typescript
+let students: [string, number][];
+students = [['Alice', 30], ['Bob', 25], ['Charlie', 28]];
+
+for (let student of students) {
+    console.log(`Nombre: ${student[0]}, Edad: ${student[1]}`);
+}
+```
+
+Este array contiene múltiples tuplas, donde cada tupla tiene un `string` (nombre del estudiante) y un `number` (edad del estudiante).
+
+### Resumen:
+- **Arrays**: Listas de elementos del mismo tipo que pueden crecer dinámicamente.
+- **Tuplas**: Estructuras de datos que contienen un número fijo de elementos con tipos específicos para cada posición.
+
